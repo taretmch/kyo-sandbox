@@ -3,6 +3,15 @@
 
 import kyo.*
 
+/** Fibers
+  *
+  * Fibersエフェクトは、管理されたスレッドプールを介して計算を非同期で実行するためのメカニズムを提供する。
+  * init関数は、新しい「グリーンスレッド」（ファイバーとも呼ばれる）を生成して、指定された計算を処理する。
+  * これにより、並列実行とシステムリソースの効率的な使用が可能になる。
+  * また、ファイバーはLocalsの適切な伝播を維持し、フォーキングプロセス中にコンテキスト情報が伝わることを保証する。
+  */
+
+
 val fiber: Fiber[Int] < IOs = Fibers.init(Math.cos(42).toInt)
 
 val fiberValue: Int < Fibers = Fibers.get(fiber)
